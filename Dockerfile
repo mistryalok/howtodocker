@@ -3,15 +3,10 @@ FROM ubuntu:bionic
 RUN apt-get update && \
 	apt-get install -y build-essential git cmake autoconf libtool pkg-config
 
-WORKDIR src
+WORKDIR /usr/src/code
 
-COPY main.cpp Makefile ./
+COPY main.cpp Makefile /usr/src/code/
 
 RUN make
-
-FROM ubuntu:bionic
-
-WORKDIR /opt/src
-
 
 CMD ["./main.o"]
